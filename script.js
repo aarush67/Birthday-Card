@@ -1,11 +1,13 @@
 document.querySelector('.open-card').addEventListener('click', function() {
     document.querySelector('.card').style.transform = 'rotateY(180deg)';
     launchConfetti();
+    playSound();
 });
 
 document.querySelector('.close-card').addEventListener('click', function() {
     document.querySelector('.card').style.transform = 'rotateY(0deg)';
     stopConfetti();
+    stopSound();
 });
 
 // Confetti generator
@@ -23,4 +25,16 @@ function launchConfetti() {
 
 function stopConfetti() {
     document.getElementById('confetti').innerHTML = '';
+}
+
+// Play sound
+function playSound() {
+    document.getElementById('birthday-sound').play();
+}
+
+// Stop sound
+function stopSound() {
+    let audio = document.getElementById('birthday-sound');
+    audio.pause();
+    audio.currentTime = 0;
 }
