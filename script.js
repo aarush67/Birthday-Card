@@ -10,15 +10,21 @@ document.querySelector('.close-card').addEventListener('click', function() {
     stopSound();
 });
 
-// Confetti generator
+// Confetti generator with better random spread
 function launchConfetti() {
     let confettiContainer = document.getElementById('confetti');
+    confettiContainer.innerHTML = '';  // Clear any existing confetti
+
     for (let i = 0; i < 100; i++) {
         let confettiPiece = document.createElement('div');
         confettiPiece.classList.add('confetti-piece');
         confettiPiece.style.left = `${Math.random() * 100}%`;
-        confettiPiece.style.animationDelay = `${Math.random() * 5}s`;
+        confettiPiece.style.top = `${Math.random() * 100}%`;
         confettiPiece.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confettiPiece.style.width = `${Math.random() * 10 + 5}px`;
+        confettiPiece.style.height = `${Math.random() * 10 + 5}px`;
+        confettiPiece.style.animationDuration = `${Math.random() * 3 + 3}s`;
+        confettiPiece.style.animationDelay = `${Math.random() * 2}s`;
         confettiContainer.appendChild(confettiPiece);
     }
 }
